@@ -1,2 +1,3 @@
-# automating-aws-with-python
-test space for aws automations
+# automating aws with python
+
+Repo for the could on automating aws with python
