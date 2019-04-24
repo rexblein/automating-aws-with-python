@@ -6,3 +6,10 @@ Repo for the could on automating aws with python
 
 Webotron syncs a local directory to an s3 bucket and optionally
 configure route53 and cloudfront
+
+### Features
+
+Webotron has the following features:
+
+- list_buckets
+- list_bucket_objects
