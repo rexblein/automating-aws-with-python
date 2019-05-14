@@ -15,14 +15,25 @@ Webotron automates the process of deploying static websites into aws.
 import boto3
 import click
 from bucket import BucketManager
+from domain import DomainManager
 
-session = boto3.Session(region_name='us-west-2')
-bucket_manager = BucketManager(session)
+session = None
+bucket_manager = None
 
 
 @click.group()
-def cli():
+@click.option('--profile', default=None,
+    help="Use a given AWS profile.")
+def cli(profile):
     """Webotron deploys websites to AWS."""
+    global session, bucket_manager
+
+    session_cfg = {}
+    if profile:
+        session_cfg['profile_name'] = profile
+
+    session = boto3.Session(**session_cfg)
+    bucket_manager = BucketManager(session)
 
 
 @cli.command('list-buckets')
